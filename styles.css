@@ -1,0 +1,315 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+}
+
+.info-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.label {
+    font-weight: 600;
+    color: #34495e;
+}
+
+.chart-container {
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.metric-value {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.memory-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.memory-details div {
+    padding: 8px 15px;
+    background: #ecf0f1;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.disk-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.disk-progress {
+    width: 100%;
+    height: 20px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.disk-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    transition: width 0.3s ease;
+}
+
+.network-stats {
+    display: grid;
+    gap: 15px;
+}
+
+.network-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.processes {
+    grid-column: 1 / -1;
+}
+
+.processes-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+tr:hover {
+    background: #f8f9fa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}
+
+/* GPU Card Styles */
+.gpu-info {
+    grid-column: span 2; /* Prend 2 colonnes */
+}
+
+.gpu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.gpu-details {
+    display: grid;
+    gap: 12px;
+}
+
+.gpu-usage {
+    display: grid;
+    gap: 15px;
+}
+
+.gpu-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.metric-label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+.progress-fill.high-usage {
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.progress-fill.medium-usage {
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+}
+
+.metric-value {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.temperature-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.temperature-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+}
+
+.temperature-value.hot {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.temperature-value.warm {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+/* GPU Card responsive */
+@media (max-width: 768px) {
+    .gpu-info {
+        grid-column: span 1;
+    }
+    
+    .gpu-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mise à jour grille pour accommoder GPU */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+@media (min-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

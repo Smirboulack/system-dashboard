@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖥️ System Dashboard</h1>
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span id="last-update">Dernière mise à jour: --</span>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Informations système -->
+            <div class="card system-info">
+                <h2>📊 Informations Système</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">OS:</span>
+                        <span id="os-info">Chargement...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">CPU:</span>
+                        <span id="cpu-info">Chargement...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Mémoire totale:</span>
+                        <span id="memory-total">Chargement...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Uptime:</span>
+                        <span id="uptime">Chargement...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GPU Info -->
+            <div class="card gpu-info">
+                <h2>🎮 Carte Graphique</h2>
+                <div class="gpu-container">
+                    <div class="gpu-details">
+                        <div class="info-item">
+                            <span class="label">Modèle:</span>
+                            <span id="gpu-model">Chargement...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Fabricant:</span>
+                            <span id="gpu-vendor">Chargement...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">VRAM:</span>
+                            <span id="gpu-vram">Chargement...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Résolution:</span>
+                            <span id="gpu-resolution">Chargement...</span>
+                        </div>
+                    </div>
+                    <div class="gpu-usage">
+                        <div class="gpu-metric">
+                            <span class="metric-label">Utilisation GPU:</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="gpu-usage-bar"></div>
+                            </div>
+                            <span class="metric-value" id="gpu-usage-percent">0%</span>
+                        </div>
+                        <div class="gpu-metric">
+                            <span class="metric-label">Mémoire GPU:</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="gpu-memory-bar"></div>
+                            </div>
+                            <span class="metric-value" id="gpu-memory-percent">0%</span>
+                        </div>
+                        <div class="gpu-metric">
+                            <span class="metric-label">Température:</span>
+                            <div class="temperature-display">
+                                <span class="temperature-value" id="gpu-temperature">--°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CPU Usage -->
+            <div class="card">
+                <h2>⚡ Utilisation CPU</h2>
+                <div class="chart-container">
+                    <canvas id="cpuChart"></canvas>
+                </div>
+                <div class="metric-value">
+                    <span id="cpu-percentage">0%</span>
+                </div>
+            </div>
+
+            <!-- Memory Usage -->
+            <div class="card">
+                <h2>💾 Utilisation Mémoire</h2>
+                <div class="chart-container">
+                    <canvas id="memoryChart"></canvas>
+                </div>
+                <div class="memory-details">
+                    <div>Utilisée: <span id="memory-used">0 GB</span></div>
+                    <div>Libre: <span id="memory-free">0 GB</span></div>
+                </div>
+            </div>
+
+            <!-- Disk Usage -->
+            <div class="card">
+                <h2>💽 Utilisation Disque</h2>
+                <div id="disk-list"></div>
+            </div>
+
+            <!-- Network -->
+            <div class="card">
+                <h2>🌐 Réseau</h2>
+                <div class="network-stats">
+                    <div class="network-item">
+                        <span class="label">↑ Upload:</span>
+                        <span id="network-upload">0 KB/s</span>
+                    </div>
+                    <div class="network-item">
+                        <span class="label">↓ Download:</span>
+                        <span id="network-download">0 KB/s</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Processes -->
+            <div class="card processes">
+                <h2>🔧 Processus (Top 10)</h2>
+                <div class="processes-list">
+                    <table id="processes-table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>PID</th>
+                                <th>CPU %</th>
+                                <th>Mémoire</th>
+                            </tr>
+                        </thead>
+                        <tbody id="processes-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

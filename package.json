@@ -1,0 +1,34 @@
+{
+  "name": "system-dashboard",
+  "version": "1.0.0",
+  "description": "Tableau de bord système avec Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never"
+  },
+  "keywords": ["electron", "system", "dashboard"],
+  "author": "Votre nom",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {
+    "systeminformation": "^5.21.15",
+    "chart.js": "^4.4.0"
+  },
+  "build": {
+    "appId": "com.example.system-dashboard",
+    "productName": "System Dashboard",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**/*"
+    ]
+  }
+}
